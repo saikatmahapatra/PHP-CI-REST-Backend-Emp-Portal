@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Kolkata');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/php-ci-rest-backend-emp-portal/';
+$config['base_url'] = 'http://localhost/PHP-CI-REST-Backend-Emp-Portal/';
 
 /*
 |--------------------------------------------------------------------------

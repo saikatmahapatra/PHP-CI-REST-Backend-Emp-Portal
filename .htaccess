@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /php-ci-rest-backend-emp-portal/
+RewriteBase /PHP-CI-REST-Backend-Emp-Portal/
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
 Header set Access-Control-Allow-Headers "X-Requested-With, Content-Type, X-Token-Auth, Authorization, perPage, page"
