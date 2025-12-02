@@ -32,7 +32,7 @@ class Cms extends App_Controller
 
 
         if ($this->getUserRoleId() == 1) {
-            array_push($dashboard_stat, array('cmsNodeKeyName' => 'employee', 'targetRole' => '1', 'heading' => 'employyes', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => '', 'icon' => 'users', 'iconCss' => 'text-blue-500', 'count' => $stat_user_count['data_rows'][0]['total'], 'otherCount' => $stat_active_user_count['data_rows'][0]['total'], 'url' => 'emp/manage'));
+            array_push($dashboard_stat, array('cmsNodeKeyName' => 'user', 'targetRole' => '1', 'heading' => 'employyes', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => '', 'icon' => 'users', 'iconCss' => 'text-blue-500', 'count' => $stat_user_count['data_rows'][0]['total'], 'otherCount' => $stat_active_user_count['data_rows'][0]['total'], 'url' => 'emp/manage'));
 
             array_push($dashboard_stat, array('cmsNodeKeyName' => 'project', 'targetRole' => '1', 'heading' => 'projects', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => '', 'icon' => 'projects', 'iconCss' => 'text-orange-500', 'count' => $stat_projects_count['data_rows'][0]['total'], 'otherCount' => $stat_projects_count['data_rows'][0]['total'], 'url' => 'project/manage-project'));
 
