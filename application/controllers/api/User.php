@@ -26,8 +26,8 @@ class User extends App_Controller
         ));
 
 
-        $perPage = $_GET['perPage'] ? $_GET['perPage'] : 30; // rows per page
-        $currentPageIndex = $_GET['page'] ? $_GET['page'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         $searchKeywords = $this->get('keywords') ? trim($this->get('keywords')) : NULL;
         $totalRecords = $this->user_model->get_rows($id, false,  NULL, NULL, TRUE, FALSE, 'U', TRUE, $searchKeywords);
