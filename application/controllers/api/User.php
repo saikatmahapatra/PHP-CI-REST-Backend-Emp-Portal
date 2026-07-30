@@ -49,8 +49,8 @@ class User extends App_Controller
         $this->isAuthorized();
         $id = $this->get('id') ? $this->get('id') : NULL;
         $searchKeywords = $this->get('keywords') ? trim($this->get('keywords')) : NULL;
-        $perPage = $_SERVER['HTTP_PERPAGE'] ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = $_SERVER['HTTP_PAGE'] ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = $_GET['perPage'] ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = $_GET['page'] ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
 
         $totalRecords = $this->user_model->get_rows($id, false, NULL, NULL, FALSE, FALSE, 'U', FALSE, $searchKeywords);
@@ -448,8 +448,8 @@ class User extends App_Controller
         $validate = TRUE;
         if ($validate == TRUE) {
             if ($action === 'search' && $keywords) {
-                $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-                $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+                $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+                $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
                 $offset = $currentPageIndex * $perPage;
                 $totalRecords = $this->user_model->search_users($keywords);
                 $result = $this->user_model->search_users($keywords, TRUE, $perPage, $offset);
@@ -542,8 +542,8 @@ class User extends App_Controller
     function getReportees_get()
     {
         $this->isAuthorized();
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         $totalRecords = $this->user_model->get_reportee_employee($this->getUserId(), NULL, NULL, NULL);
         $result = $this->user_model->get_reportee_employee($this->getUserId(), NULL, $perPage, $offset);

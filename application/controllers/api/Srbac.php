@@ -21,8 +21,8 @@ class Srbac extends App_Controller
         ));
         $id = $this->get('id') ? $this->get('id') : null;
 
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
 
         $totalRecords = $this->user_model->getRoles($id, null, null);
@@ -51,8 +51,8 @@ class Srbac extends App_Controller
         ));
         $id = $this->get('id') ? $this->get('id') : null;
 
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
 
         $totalRecords = $this->user_model->getPermissions($id, null, null);

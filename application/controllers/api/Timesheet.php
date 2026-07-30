@@ -121,8 +121,8 @@ class Timesheet extends App_Controller
         $year = $this->get('year') ? $this->get('year') : date('Y');
         $month = $this->get('month') ? $this->get('month') : date('m');
         $id = $this->get('id') ? $this->get('id') : null;
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         if ($year) {
             $totalRecords = $this->project_model->get_timesheet_rows($id, NULL, NULL, FALSE, TRUE, $year, $month, $userId);
@@ -196,8 +196,8 @@ class Timesheet extends App_Controller
             'projectIds' => $this->post('projects')
         );
         
-        $perPage = $_SERVER['HTTP_PERPAGE'] ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = $_SERVER['HTTP_PAGE'] ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = $_GET['perPage'] ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = $_GET['page'] ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
 
         $totalRecords = $this->project_model->get_report_data(NULL, false, NULL, NULL, $filterByCond);

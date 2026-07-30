@@ -68,8 +68,8 @@ class Cms extends App_Controller
         $postType = $this->get('type') ? $this->get('type') : null;
         $searchKeywords = $this->get('searchBy') ? $this->get('searchBy') : null;
 
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
 
         if ($pageName === 'managePosts') {
@@ -206,8 +206,8 @@ class Cms extends App_Controller
     function getHolidays_get()
     {
         $year = $this->get('year') ? $this->get('year') : Date('Y');
-        // $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        // $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        // $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        // $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         // $offset = $currentPageIndex * $perPage;
         // $totalRecords = $this->cms_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
         $result_array = $this->cms_model->get_holidays(NULL, NULL, NULL, $year);
@@ -353,8 +353,8 @@ class Cms extends App_Controller
     function getSiteMeta_get()
     {
         $site_meta = $this->get('selectedMetaType') ? $this->get('selectedMetaType') : null;
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         $totalRecords = $this->cms_model->get_sitemeta(NULL, NULL, NULL, $site_meta);
         $result_array = $this->cms_model->get_sitemeta(NULL, $perPage, $offset, $site_meta);

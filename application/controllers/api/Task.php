@@ -50,8 +50,8 @@ class Task extends App_Controller
     function getTask_get()
     {
         $id = $this->get('id') ? $this->get('id') : null;
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         $numRows = $this->project_model->get_task_rows($id, FALSE);
         $resultArray = $this->project_model->get_task_rows($id, TRUE, $perPage, $offset);

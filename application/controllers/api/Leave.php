@@ -43,8 +43,8 @@ class Leave extends App_Controller
     // for admin
     function getLeave_post()
     {
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         //$leaveId = $this->post('leaveId') ? $this->post('leaveId') : NULL;
         $cond = array();
@@ -630,8 +630,8 @@ class Leave extends App_Controller
         $this->checkRolePermissions(array(
             'adminAccess',
         ));
-        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
-        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 30; // rows per page
+        $currentPageIndex = isset($_GET['page']) ? $_GET['page'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
         $totalRecords = $this->leave_model->get_leave_balance(NULL, FALSE, NULL, NULL, TRUE);
         $result_array = $this->leave_model->get_leave_balance(NULL, TRUE, $perPage, $offset, TRUE);
